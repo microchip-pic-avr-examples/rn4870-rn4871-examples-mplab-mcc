@@ -16,10 +16,10 @@
                 "name": "xc8",
                 "semverRange": "^2.20.0"
         },
-        "dfp": [
-            {"name": "Atmega_DFP", "semverRange": "^2.2.108"},
-            {"name": "PIC16F1xxxx_DFP", "semverRange": "^1.4.119"}
-        ],
+        "dfp": {
+            "name": "Atmega_DFP", 
+            "semverRange": "^2.2.108"
+        },
         "configurator": {
             "name": "MCC",
             "semverRange": ">=3.95.0"
@@ -27,20 +27,12 @@
         "device": {
             "metaDataVersion": "1.0.0",
             "category": "com.microchip.portal.contentRef",
-            "content": [
-                {
+            "content": {
                     "metaDataVersion": "1.0.0", 
                     "category": "com.microchip.device",
                     "name": "ATMEGA3208", 
                     "versionRange": "*" 
-                },
-                {
-                    "metaDataVersion": "1.0.0", 
-                    "category": "com.microchip.device",
-                    "name": "PIC16LF18456", 
-                    "versionRange": "*" 
-                }
-            ]
+            }
         },
         "author": "MCU8 Library Development Team",
         "subcategories": [
@@ -57,7 +49,9 @@
             "RN4870",
             "BLE",
             "Wireless",
-            "Internet of things"
+            "Internet of Things",
+            "ATMEGA3208",
+            "PIC16LF18456"
         ]
     },
     "additionalData": {
