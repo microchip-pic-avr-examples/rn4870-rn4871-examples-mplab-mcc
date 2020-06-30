@@ -28,8 +28,6 @@ Refer to the **/images** folder for source files & max resolution.
 
 ## Related Documentation
 
-In addition a link to the device family landing page and relevant peripheral pages as well:
-
 - [Microchip Bluetooth](https://www.microchip.com/design-centers/wireless-connectivity/bluetooth)
 - [RN Data Sheet](http://ww1.microchip.com/downloads/en/DeviceDoc/RN4870-71-Bluetooth-Low-Energy-Module-Data-Sheet-DS50002489D.pdf)
 - [RN User Guide](http://ww1.microchip.com/downloads/en/DeviceDoc/RN4870-71-Bluetooth-Low-Energy-Module-User-Guide-DS50002466C.pdf)
@@ -42,6 +40,7 @@ In addition a link to the device family landing page and relevant peripheral pag
 - MPLAB® XC8 2.10 or a newer compiler [(microchip.com/mplab/compilers)](http://www.microchip.com/mplab/compilers)
 - MPLAB® Code Configurator (MCC) 3.95.0 or newer [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
 - MPLAB® Code Configurator (MCC) Device Libraries PIC10 / PIC12 / PIC16 / PIC18 MCUs [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
+- MPLAB® Code Configurator (MCC) Device Libraries AVR® MCUs [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
 - Microchip ATmega_DFP Series Device Support (2.2.108) or newer [(packs.download.microchip.com/)](https://packs.download.microchip.com/)
 - Microchip PIC16F1xxxx_DFP Series Device Support (1.4.119) or newer [(packs.download.microchip.com/)](https://packs.download.microchip.com/)
 
@@ -64,26 +63,28 @@ To install the RN4870 | RN4871 BLE Module Library:
 2. Scroll to the bottom of the page and select the Current Downloads tabs.
 3. Download the RN4870 | RN4871 BLE Module Library (rn487x_ble_module-1.0.0.mc3lib).
 4. In the MPLAB® X IDE click on Tools → Options.
-⋅⋅* Ordered sub-listThis may also be found unnder: In the MPLAB® X IDE click on MPLAB® X IDE → Preferences.
+     - This may also be found unnder: In the MPLAB® X IDE click on MPLAB® X IDE → Preferences.
 5. Click on Plugins tab.
 6. Click on Install Library.
 7. Browse to the location where you saved rn487x_ble_module-1.0.0.mc3lib, select and click Open.
+
+---
 
 ## Operation
 
 ### Part 1: Setup and Generation
 
 1. [Create a New Project](https://www.youtube.com/watch?v=iZuucxaAVLg) in [MPLAB® X IDE](https://www.microchip.com/mplab/mplab-x-ide).
-<br><img src="images/mplabIcon.png" alt="mplabIcon" width="50"/>
+<br><img src="images/mplabIcon.png" alt="mplabIcon" width="75"/>
 
 2. The Process described below is reflective of the Validation Hardware used: LightBlue. Microcontrollers used for reference are the PIC16LF18456 and ATmega3208 8-bit devices.
-<br><img src="images/selectMCC.png" alt="selectMCC" width="200"/>
+<br><img src="images/selectMCC.png" alt="selectMCC" width="350"/>
 
 3. Open MCC by clicking **Tools** → **Embedded** → **MPLAB® Code Configurator** *_OR_* click on the MCC icon. 
-<br><img src="images/mccIcon.png" alt="mccIcon" width="50"/>
+<br><img src="images/mccIcon.png" alt="mccIcon" width="90"/>
 
 4. If MCC is not available; it is required to be installed. Navigate to Tools→ Plugins. Under Available Plugins select MPLAB® Code Configurator, ensure the checkbox is selected and press Install. Once this installation is completed, MCC will be available.
-<br><img src="images/installPlugin.png" alt="installPlugin" width="400"/>
+<br><img src="images/installPlugin.png" alt="installPlugin" width="500"/>
 
 5. On launching MCC; it will request saving MyConfig.mc3. This file may be renamed if desired; and contains the MCC Configuration information related to the project.
 <br><img src="images/configurationMccSetup.png" alt="configurationMccSetup" width="300"/>
@@ -101,21 +102,16 @@ To install the RN4870 | RN4871 BLE Module Library:
 
 9. Enable the desired APIs. Basic description of API(s) can be found by hovering mouse over the ToolTip icon. 
 
-*_Note:_* For both example use cases, Mode Control and Read Message support are required and cannot be deselected.
+**Note:** For both example use cases, Mode Control and Read Message support are required and cannot be deselected.
 
 10. Through Foundation Services, select the UART(s) instances used for communication with the Module; or for supporting the generated example.
 * Set the Baud rate for the module.
     * The default baud for the RN4870 and RN4871 modules is 115200.
-    * **Note:** The pre-programed baud rate for the AVR-BLE & PIC-BLE development boards is 9600.
+    * **Hint:** The pre-programed baud rate for the AVR-BLE & PIC-BLE development boards is 9600.
 
 <br><img src="images/9600_screenshot.png" alt="9600_screenshot" width="500"/>
 
 <br><img src="images/115200_screenshot.png" alt="115200_screenshot" width="500"/>
-
-Below are demonstrations of setups for the examples for PIC and AVR devices. 
-The development boards used for these examples are the: 
-* [PIC-BLE](https://www.microchip.com/DevelopmentTools/ProductDetails/DT100112)
-* [AVR-BLE](https://www.microchip.com/DevelopmentTools/ProductDetails/DT100111)
 
 ---
 
@@ -214,9 +210,7 @@ _AVR Implementation:_
 * To enable the functionality again, program your board with the latest source code available:
     * [AVR-BLE LightBlue Demo](https://github.com/microchip-pic-avr-solutions/avr-lightblue-explorer-demo)
     * [PIC-BLE LightBlue Demo](https://github.com/microchip-pic-avr-solutions/pic-lightblue-explorer-demo)
-<br>
-<br><img src="images/ConnectedFull.png" alt="ConnectedFull" width="300"/>
-<img src="images/smartConnectView.png" alt="smartConnectView" width="300"/>
+<br><img src="images/ConnectedFull.png" alt="ConnectedFull" width="300"/><img src="images/smartConnectView.png" alt="smartConnectView" width="300"/>
 
 7. Select the Properties Option: Write Notify Indicate Running the Example.
 <br><img src="images/Connected2.png" alt="Connected2" width="300"/><img src="images/selectNotify.png" alt="selectNotify" width="300"/>
@@ -258,6 +252,8 @@ Baud Rate will be configured as: 9600
 <br><img src="images/terminalCharacter.png" alt="terminalCharacter" width="400"/>
 <br><img src="images/Select.png" alt="Select" width="300"/><img src="images/Hex.png" alt="Hex" width="300"/>
 
+---
+
 ## Summary
 
 ### Command, Data Communication with Asynchronized Message Processing:
@@ -295,8 +291,6 @@ Interface. Only (1) Pin is required by the RN487X Modules for operation; this is
 | BT_RST | RST_N | **Module Reset**  | Active-Low, Internal Pull-High |
 | BT_RX_IND | P3_3 | Configured as UART RX Indication pin | Active-Low |
 
-<br><img src="images/mccData.png" alt="mccData" width="200"/>
-
 ---
 
 ### Basic Application Ready API(s):
@@ -317,9 +311,9 @@ API(s) will be generated to supported behaviors described below:
 
 | Allowed Behavior from Library | Processing Action |
 | :------------- |:-------------:|
-| Disconnect from Module | API used to Parse a Response Message |
-| Reboot Module | Response Effectively a BLOCKING method which will read continuously from the RN487X Module until a specific expected Message is received. |
-| Support API(s) allowing for Public control of Modules Command & Data Operations | Supporting API(s) required for advanced usage of Modules capabilities.|
+| Read Message | API used to Parse a Response Message |
+| Wait For Message | Response Effectively a BLOCKING method which will read continuously from the RN487X Module until a specific expected Message is received. |
+| Support 'Mode' Control | Supporting API(s) required for advanced usage of Modules capabilities.|
 
 <br><img src="images/mccSet.png" alt="mccSet" width="200"/>
 
