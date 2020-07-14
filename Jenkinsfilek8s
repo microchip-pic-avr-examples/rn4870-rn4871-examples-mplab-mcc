@@ -1,3 +1,5 @@
+// Jenkinsfilek8s v1.2.0
+
 pipeline {
     agent {
         kubernetes {
@@ -13,7 +15,8 @@ pipeline {
                 description: "Email to send build failure and fixed notifications.")
     }
 	
-	environment {		
+	environment {
+		GITHUB_OWNER = 'microchip-pic-avr-examples'	
 		GITHUB_URL ='https://github.com/microchip-pic-avr-examples/rn4870-rn4871-examples-mplab-mcc.git'
 		BITBUCKET_URL = 'https://bitbucket.microchip.com/scm/ebe/rn4870-rn4871-examples-mplab-mcc.git'
 		DEPLOY_TOOL_URL = 'https://bitbucket.microchip.com/scm/citd/tool-github-deploy.git'
@@ -23,13 +26,24 @@ pipeline {
 
     options {
         timestamps()
-        timeout(time: 20, unit: 'MINUTES')
+        timeout(time: 30, unit: 'MINUTES')
     }
 
     stages {
         stage('Checkout') {
             steps {
 				checkout scm
+            }
+        }
+		
+		stage('metadata') {
+            steps {
+				script {
+					execute("pip install jsonschema")
+					execute("git clone https://bitbucket.microchip.com/scm/citd/metadata-schema.git")						
+					execute("git clone https://bitbucket.microchip.com/scm/citd/tool-metadata-validator.git")					
+					execute("cd tool-metadata-validator && python metadata-validator.py -data '../.main-meta/main.json' -schema '../metadata-schema/main-schema.json'")
+				}
             }
         }
 		
@@ -56,7 +70,7 @@ pipeline {
             }
         }	
 		
-        stage('Deploy') {
+        stage('GitHub-Deploy') {
 			when {
 				not { 
 					changeRequest() 
@@ -76,8 +90,40 @@ pipeline {
                     sendSuccessfulGithubDeploymentEmail()					
 				}
 			}
-        }		
+        }
+
+		stage('Portal-Deploy') {
+			when {
+				not { 
+					changeRequest() 
+				}			
+				tag ''
+			}
+			steps {
+				script {
+					def metadata = readJSON file:".main-meta/main.json"					
+					def version = metadata.content.version
+					def project = metadata.content.projectName
+
+					if(version == env.TAG_NAME) {				
+						def cmdArgs = "'{\"repoOwnerName\":\"$env.GITHUB_OWNER\",\"repoName\":\"$project\",\"tagName\":\"$version\"}'"
+						cmdArgs = cmdArgs.replaceAll("\"","\\\\\"")						
+					
+						execute("git clone https://bitbucket.microchip.com/scm/portal/bundles.git")
+						execute("cd bundles && chmod 755 ./portal-client-cli-linux")
+						execute("git clone https://bitbucket.microchip.com/scm/citd/tool-portal-client-launcher.git")
+						execute("cd tool-portal-client-launcher && node portalLauncher.js -app=../bundles/portal-client-cli-linux -cmd=\"uploadGitHub ${cmdArgs}\"")
+						sendSuccessfulPortalDeploymentEmail()
+					} else {
+						echo "Tag name is not equal to metadata content version."
+						execute("exit 1")
+					}
+					
+				}
+			}
+		}
 	}
+	
 
     post {
         failure {			
@@ -113,6 +159,12 @@ def sendPipelineFailureEmail () {
 
 def sendSuccessfulGithubDeploymentEmail () {
     mail to: "${params.NOTIFICATION_EMAIL}",
-    subject: "Successful Deployment: ${currentBuild.fullDisplayName}",
+    subject: "Successful Github Deployment: ${currentBuild.fullDisplayName}",
     body: "The changes have been successfully deployed to GitHub. ${env.GITHUB_URL}"
+}
+
+def sendSuccessfulPortalDeploymentEmail () {
+    mail to: "${params.NOTIFICATION_EMAIL}",
+    subject: "Successful Portal Deployment: ${currentBuild.fullDisplayName}",
+    body: "The changes have been successfully deployed to Discover Portal."
 }

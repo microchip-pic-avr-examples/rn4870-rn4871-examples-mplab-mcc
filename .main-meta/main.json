@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.1.0",
         "name": "com.microchip.mcu8.mplabx.project.rn4870-rn4871-examples-mplab-mcc",
-        "version": "3.0.2",
+        "version": "1.0.0",
         "displayName": "RN4870 MPLAB MCC Library Examples",
         "projectName": "RN4870BLE",
         "shortDescription": "Microchip RN4870 | RN4871 BLE Modules Library (MCC MPLAB Examples using PIC/AVR-BLE Development Boards)",
@@ -50,18 +50,18 @@
             "BLE",
             "Wireless",
             "Internet of Things",
-            "ATMEGA3208",
-            "PIC16LF18456"
-        ]
-    },
-    "additionalData": {
-        "longDescription": {
-            "metaDataVersion": "1.0.0",
-            "category": "com.microchip.portal.fileRef",
-            "content": {
+            "AVR",
+            "PIC16"
+        ],
+        "additionalData": {
+            "longDescription": {
                 "metaDataVersion": "1.0.0",
-                "fileName": "./README.md",
-                "mimeType": "text/markdown"
+                "category": "com.microchip.portal.fileRef",
+                "content": {
+                    "metaDataVersion": "1.0.0",
+                    "fileName": "./README.md",
+                    "mimeType": "text/markdown"
+                }
             }
         }
     }
