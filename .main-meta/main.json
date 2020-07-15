@@ -35,10 +35,13 @@
             }
         },
         "author": "MCU8 Library Development Team",
-        "subcategories": [
+        "subcategories":[
             "MCC",
             [
-               "Peripherals", "UART", "Wireless", "BLE"
+                "Peripherals", "UART"
+            ],
+            [
+                "Wireless", "BLE"
             ]
         ],
         "peripherals": [
