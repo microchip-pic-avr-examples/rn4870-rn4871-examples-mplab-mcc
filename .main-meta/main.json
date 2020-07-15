@@ -36,13 +36,14 @@
         },
         "author": "MCU8 Library Development Team",
         "subcategories": [
-            "MCC", "BLE",
+            "MCC",
             [
-               "Peripherals", "UART"
+               "Peripherals", "UART", "Wireless", "BLE"
             ]
         ],
         "peripherals": [
-            "Interrupt"
+            "Interrupt",
+            "UART"
         ],
         "keywords": [
             "MCC",
@@ -51,7 +52,9 @@
             "Wireless",
             "Internet of Things",
             "AVR",
-            "PIC16"
+            "PIC16",
+            "UART",
+            "Interrupt"
         ],
         "additionalData": {
             "longDescription": {
