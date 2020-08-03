@@ -6,7 +6,7 @@
         "name": "com.microchip.mcu8.mplabx.project.rn4870-rn4871-examples-mplab-mcc",
         "version": "1.0.0",
         "displayName": "RN4870 MPLAB MCC Library Examples",
-        "projectName": "avr-rn4870-example-transparent-mplab-mcc",
+        "projectName": "rn4870-rn4871-examples-mplab-mcc",
         "shortDescription": "Microchip RN4870 | RN4871 BLE Modules Library (MCC MPLAB Examples using PIC/AVR-BLE Development Boards)",
         "ide": {
             "name": "MPLABX",
