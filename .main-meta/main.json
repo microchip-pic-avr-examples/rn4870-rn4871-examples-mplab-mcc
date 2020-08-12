@@ -5,7 +5,7 @@
         "metaDataVersion": "1.1.0",
         "name": "com.microchip.mcu8.mplabx.project.rn4870-rn4871-examples-mplab-mcc",
         "version": "1.0.0",
-        "displayName": "RN4870 MPLAB MCC Library Examples",
+        "displayName": "Transparent Serial & Basic Data Exchange BLE examples for 8-bit PIC & AVR devices",
         "projectName": "rn4870-rn4871-examples-mplab-mcc",
         "shortDescription": "Microchip RN4870 | RN4871 BLE Modules Library (MCC MPLAB Examples using PIC/AVR-BLE Development Boards)",
         "ide": {
@@ -35,29 +35,26 @@
             }
         },
         "author": "MCU8 Library Development Team",
-        "subcategories":[
+        "subcategories": [
             "MCC",
             [
-                "Peripherals", "UART"
+                "Peripherals", "USART", "TIMER"
             ],
-            [
-                "Wireless", "BLE"
-            ]
+            "Wireless"
         ],
         "peripherals": [
-            "Interrupt",
-            "UART"
+            "USART",
+            "TIMER"
         ],
         "keywords": [
-            "MCC",
-            "RN4870",
-            "BLE",
+            "Bluetooth",
+            "C programming",
             "Wireless",
-            "Internet of Things",
             "AVR",
             "PIC16",
-            "UART",
-            "Interrupt"
+            "Interrupts",
+            "RN4870",
+            "BLE"
         ],
         "additionalData": {
             "longDescription": {
