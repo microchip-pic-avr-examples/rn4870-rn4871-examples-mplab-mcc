@@ -40,7 +40,9 @@
             [
                 "Peripherals", "USART", "TIMER"
             ],
-            "Wireless"
+            [
+                "Wireless", "Bluetooth"
+            ]
         ],
         "peripherals": [
             "USART",
