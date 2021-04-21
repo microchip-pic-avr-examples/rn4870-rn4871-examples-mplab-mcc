@@ -36,15 +36,14 @@
         },
         "author": "MCU8 Library Development Team",
         "subcategories": [
-            "MCC",
+            "Communications",
             [
                 "Peripherals",
-                "USART",
-                "TIMER"
+                "USART"
             ],
             [
-                "Wireless",
-                "Bluetooth"
+                "Peripherals",
+                "TIMER"
             ]
         ],
         "peripherals": [
